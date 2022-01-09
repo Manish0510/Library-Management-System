@@ -1,0 +1,86 @@
+<HTML>
+    <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <title>Books Catalogue</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+    </style>
+</head>
+<body style="background-color: linear-gradient(120deg,#2980b9, #8e44ad);">
+
+    <div class="container-fluid sticky-top" style="display: flex; border-bottom: 1px solid black; background-color: white;">
+        <div class="container" style="float: left; margin-top: 4px;">
+            <h5>Library Management System</h5>
+        </div>
+        <div class="container" style="float: right; margin-top: 4px;">
+            <form class="form-inline" action="/searchResult" method="POST" style="display: flex;">
+                <input id="searchbar" class="form-control" type="search" name="search" placeholder="Search a book" aria-label="Search" style="width: 30vw; height: 30px;">
+                <button class="btn btn-outline-primary my-2 my-sm-0 py-0" type="submit" onsubmit="search()" style="height: 30px;">Search</button>
+            </form>
+        </div>
+    </div><br>            
+
+    <div class="container" id="cards" style="display: block;">
+        <!-- <h1>{{res}}</h1> -->
+        <p style="display: none;">
+            {% set b_id=[] %}
+            {% set b_name=[] %}
+            {% set b_img=[] %}
+            {% set b_desc=[] %}
+            {% set b_author=[] %}
+            {% set b_genre=[] %}
+            {% set b_stock=[] %}
+            {% for user in res %}
+                {{ b_id.append(user.b_id) }}
+                {{ b_name.append(user.b_name) }}
+                {{ b_img.append(user.b_img) }}
+                {{ b_desc.append(user.b_desc) }}
+                {{ b_author.append(user.b_author) }}
+                {{ b_genre.append(user.b_genre) }}
+                {{ b_stock.append(user.b_stock) }}
+            {% endfor %}
+            {{ b_id|join(', ')}}
+            {{ b_name|join(', ')}}
+            {{ b_img|join(', ')}}
+            {{ b_desc|join(', ')}}
+            {{ b_author|join(', ')}}
+            {{ b_genre|join(', ')}}
+            {{ b_stock|join(', ')}}
+        </p>
+
+        {% for i in range(b_img|length) %}  
+
+            <div class="row" style="border: 2px solid navy; background-color: white;">
+
+                <div class="col">
+                    <img src="{{b_img[i]}}" alt="" style="height: 180px; width: 100%;">
+                </div>
+
+                <div class="col" >
+                    <p class="book m-0" style="font-weight: bolder; font-size: x-small; padding-top: 10px;">Book Name : <span style="font-weight: 500; font-size: x-small;">{{b_name[i]}}</span></p>
+                    <p class="m-0" style="font-weight: bolder; font-size: x-small;">Book ID : <span style="font-weight: 500; font-size: x-small;">{{b_id[i]}}</span></p>
+                    <p class="m-0" style="font-weight: bolder; font-size: x-small;">Book Author : <span style="font-weight: 500; font-size: x-small;">{{b_author[i]}}</span></p>
+                    <p class="m-0" style="font-weight: bolder; font-size: x-small;">Book Genre : <span style="font-weight: 500; font-size: x-small;">{{b_genre[i]}}</span></p>
+                    <p class="m-0" style="font-weight: bolder; font-size: x-small;">Book Availability : <span style="font-weight: 500; font-size: x-small;">{{b_stock[i]}}</span></p>
+                    <br>
+                    <!-- <button class="btn-primary" style="width: 15vw; border-radius: 5px; border: none; font-size: smaller; font-weight: bolder;">Issue Book</button> -->
+                </div>
+
+                <div class="col" style="text-align: justify;">
+                    <p class="m-0" style="font-weight: bolder; font-size: x-small; padding-top: 10px;">Book Description : <br><span style="font-weight: 500; font-size: xx-small;">{{b_desc[i]}}</span></p>
+                </div>
+
+          </div><br>
+
+        {% endfor %} 
+    </div>
+
+    <body>

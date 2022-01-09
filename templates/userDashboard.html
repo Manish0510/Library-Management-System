@@ -1,0 +1,80 @@
+<HTML>
+    <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+    <style>
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg,#2980b9, #8e44ad);
+  height: 100vh;
+  overflow: hidden;
+}
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+.center h1{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+}
+
+
+
+
+    </style>
+
+</head>
+    <body>
+        
+        <div class="container-fluid sticky-top" style="display: flex; border-bottom: 1px solid black; background-color: white;">
+            <div class="container" style="float: left; margin-top: 4px;margin-left: 0px;">
+                <h2>Library Management System</h2>
+            </div>
+        
+        </div><br>  
+    
+
+    <div class="center" style="height:60%; margin-top:5%;border-style:solid; border-color:grey; border-width:1px;padding-top:10px">
+         
+        <div class="col-4" >
+        
+        </div>
+        <div class="d-grid gap- col-6 mx-auto" >
+            <h2>User Options</h2>
+        <form action="{{ url_for('viewLibrary')}}" method="post"> 
+            <button type="submit" class="btn btn-primary" style="margin:1cm  auto 0 auto;width: 200px;height: auto;">View Library</button>
+        </form><br>
+
+        <form action="{{ url_for('borrowedbook')}}" method="post"> 
+            <button type="submit" class="btn btn-primary" style="margin: auto;width: 200px;height: auto;">Borrowed Books</button>
+        </form><br>
+
+        <form action="{{ url_for('userDetails')}}" method="post"> 
+            <button type="submit" class="btn btn-primary" style="margin: auto;width: 200px;height: auto;">User Details</button>
+        </form><br>
+    
+        <form action="{{ url_for('logOut')}}" method="post"> 
+            <button type="submit" class="btn btn-primary"  style="margin: auto;width: 200px;height: auto;">Logout</button>
+        </form><br>
+
+        
+
+        </div>
+    
+    <body>
